@@ -13,32 +13,31 @@ public class Exercise6 {
 		
         System.out.println("Característicasde nuestras ecuaciones:\n- Solo una incógnita: x");
         
-		pattern = Pattern.compile("^Lín.*", Pattern.MULTILINE);
-		matcher = pattern.matcher("""
-									Ecuaciones de primer grado con una incógnita. Veamos algunos ejemplos válidos y no válidos: 
-
-									Ejercicio1: x=3+13
-									
-									Ejercicio2: 8+70=x
-									
-									Ejercicio3: 2-x=x-8
-									
-									Ejercicio4: x-1+x+3=2+x+8-x
-									
-									Ejercicio5: 4+x-3-x+1+x=x+x+x-1-1
-									
-									No vale: ++x-3=x+6
-									
-									No vale: x++5=8+x
-									
-									No vale: x=--x
-									
-									No vale: 3-1+x=-4+6--x
+        pattern = Pattern.compile("^(([\\p{Punct}&&[-+]]??)([\\p{Lower}&&[x]]|[\\p{Digit}]+?)){1}?(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+?))*?=(([\\p{Punct}&&[-+]]??)([\\p{Lower}&&[x]]|[\\p{Digit}]+?)){1}?(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+?))*?$", Pattern.MULTILINE);
+		matcher = pattern.matcher(""" 
+									x=3+13
+									8+70=x
+									2-x=x-8
+									x-1+x+3=2+x+8-x
+									4+x-3-x+1+x=x+x+x-1-1
+									++x-3=x+6
+									x++5=8+x
+									x=--x
+									3-1+x=-4+6--x
 									
 									""");
 		System.out.println("Ecuaciones: Soluciones: ");
         while (matcher.find()) {
-            System.out.println(matcher.start());
+        	System.out.printf("\nEcuacion: %s\n", matcher.group(0));
+			System.out.printf("-----Primera expresion---- \n%s%s\n", matcher.group(1), (matcher.group(4)=="null" ? "" : matcher.group(4)));
+			System.out.printf("Primer término: %s\n", matcher.group(3));
+			if(matcher.group(4)!="null") {
+				System.out.printf("Segundo término: %s\n", matcher.group(6));
+			}
+			System.out.printf("-----Segunda expresion---- \n%s%s\n", matcher.group(7), matcher.group(10));
+			System.out.printf("Primer término: %s\n", matcher.group(9));
+			System.out.printf("Segundo término: %s\n", matcher.group(12));
+			
         }
 	}
 	

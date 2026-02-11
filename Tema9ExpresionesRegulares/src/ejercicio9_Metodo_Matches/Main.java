@@ -60,16 +60,28 @@ public class Main {
 		System.out.println("-4 :" + "-4".matches("-?[\\p{Graph}&&[x\\d]]?[\\p{Graph}&&[x\\d-]]?"));
 		System.out.println("-x :" + "-x".matches("-?[\\p{Graph}&&[x\\d]]?[\\p{Graph}&&[x\\d-]]?"));
 		System.out.println("-y :" + "-y".matches("-?[\\p{Graph}&&[x\\d]]?[\\p{Graph}&&[x\\d-]]?"));
-		System.out.println("-x+5=10-3 :" + "-x+5=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("--x+5=10-3 :" + "--x+5=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-4++x=10-3 :" + "-4++x=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-x4+5=10-3 :" + "-x4+5=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-4x+x=10-3 :" + "-4x+x=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-x+54=10-3 :" + "-x+54=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-4+xx=10-3 :" + "-4+xx=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-x+5==10-3 :" + "-x+5==10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
-		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}=(([\\p{Punct}&&[-+]]?)(x|\\d+)){1,}"));
+		System.out.println("-x+5=10-3 :" + "-x+5=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("--x+5=10-3 :" + "--x+5=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-4++x=10-3 :" + "-4++x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-x4+5=10-3 :" + "-x4+5=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-4x+x=10-3 :" + "-4x+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-x+54=10-3 :" + "-x+54=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-4+xx=10-3 :" + "-4+xx=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-x+5==10-3 :" + "-x+5==10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1,}"));
+		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]{1})(x)|([\\p{Punct}&&[-+]])(\\d+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Alnum}&&[x\\d]])){1}(([\\p{Punct}&&[-+]]{1})(x)|([\\p{Punct}&&[-+]])(\\d+)){1,}"));
+		System.out.println("");
+		System.out.println("-x+5=10-3 :" + "-x+5=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("--x+5=10-3 :" + "--x+5=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-4++x=10-3 :" + "-4++x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-x4+5=10-3 :" + "-x4+5=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-4x+x=10-3 :" + "-4x+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-x+54=10-3 :" + "-x+54=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-4+xx=10-3 :" + "-4+xx=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-x+5==10-3 :" + "-x+5==10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1,}"));
+		System.out.println("-4+x=10-3 :" + "-4+x=10-3".matches("(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+))*=(([\\p{Punct}&&[-+]]?)([\\p{Lower}&&[x]]|[\\p{Digit}]+)){1}(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+))*"));
 	}
 	
 	public static void main(String[] args) {
