@@ -8,9 +8,15 @@ public class Exercise6 {
 	public void show() {
 		
 		String text = "Esto es un texto escrito en español";
-        Pattern pattern;
-        Matcher matcher;
-		
+        Pattern pattern, patternnum, patternincog;
+        String ecuacion, expresion1, expresion2;
+        Matcher matcher, matcher2;
+        int num, resultnum, resultincog, resultfin;
+		int resultincog1 = 0;
+		int resultincog2 = 0;
+        int resultnum1 = 0;
+        int resultnum2 = 0;
+        
         System.out.println("Característicasde nuestras ecuaciones:\n- Solo una incógnita: x");
         
         pattern = Pattern.compile("^(([\\p{Punct}&&[-+]]??)([\\p{Lower}&&[x]]|[\\p{Digit}]+?)){1}?(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+?))*?=(([\\p{Punct}&&[-+]]??)([\\p{Lower}&&[x]]|[\\p{Digit}]+?)){1}?(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+?))*?$", Pattern.MULTILINE);
@@ -29,6 +35,84 @@ public class Exercise6 {
 		System.out.println("Ecuaciones: Soluciones: ");
         while (matcher.find()) {
         	System.out.printf("\nEcuacion: %s\n", matcher.group(0));
+        	ecuacion = matcher.group(0);
+        	expresion1 = ecuacion.substring(0, ecuacion.indexOf("="));
+    		expresion2 = ecuacion.substring(ecuacion.indexOf("=")+1);
+    		if(expresion1.substring(0,1)!= "-") {
+    			if(expresion1.substring(0,1)!= "+") {
+    				expresion1 = "+".concat(expresion1);
+    			}
+    		}
+    		for(int i = 1; i < expresion1.length(); i++) {
+    			if(expresion1.charAt(i) == '-' || expresion1.charAt(i) == '+') {
+    				expresion1 = (expresion1.substring(0, i)).concat("\n".concat(expresion1.substring(i)));
+    				i++;
+    			}
+    		}
+    		if(expresion2.substring(0,1)!= "-") {
+    			if(expresion2.substring(0,1)!= "+") {
+    				expresion2 = "+".concat(expresion2);
+    			}
+    		}
+    		for(int i = 1; i < expresion2.length(); i++) {
+    			if(expresion2.charAt(i) == '-' || expresion2.charAt(i) == '+') {
+    				expresion2 = (expresion2.substring(0, i)).concat("\n".concat(expresion2.substring(i)));
+    				i++;
+    			}
+    		}
+    		patternnum = Pattern.compile("^(([\\p{Punct}&&[-+]])([\\p{Digit}]+?))*?$", Pattern.MULTILINE);
+            matcher2 = patternnum.matcher(expresion1);
+            while (matcher2.find()) {
+    			num = Integer.parseInt(matcher2.group(3));
+    			if(matcher2.group(2).equalsIgnoreCase("+")) {
+    				resultnum1 = resultnum1 + num;
+    			}else if(matcher2.group(2).equalsIgnoreCase("-")) {
+    				resultnum1 = resultnum1 - num;
+    			}
+    			System.out.println(resultnum1);	
+    		}
+            patternincog = Pattern.compile("^(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]))*?$", Pattern.MULTILINE);
+            matcher2 = patternincog.matcher(expresion1);
+            while (matcher2.find()) {
+    			if(matcher2.group(2).equalsIgnoreCase("-")) {
+    				resultincog1 = resultincog1 + 1;
+    			}else if(matcher2.group(2).equalsIgnoreCase("-")) {
+    				resultincog1 = resultincog1 - 1;
+    			}
+    			System.out.println(resultincog1 + "x");
+    		}
+            patternnum = Pattern.compile("^(([\\p{Punct}&&[-+]])([\\p{Digit}]+?))*?$", Pattern.MULTILINE);
+            matcher2 = patternnum.matcher(expresion2);
+            while (matcher2.find()) {
+    			num = Integer.parseInt(matcher2.group(3));
+    			if(matcher2.group(2).equalsIgnoreCase("+")) {
+    				resultnum2 = resultnum2 + num;
+    			}else if(matcher2.group(2).equalsIgnoreCase("-")) {
+    				resultnum2 = resultnum2 - num;
+    			}    			
+    		}
+            System.out.println(resultnum2);
+            patternincog = Pattern.compile("^(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]))*?$", Pattern.MULTILINE);
+            matcher2 = patternincog.matcher(expresion2);
+            while (matcher2.find()) {
+    			if(matcher2.group(2).equalsIgnoreCase("+")) {
+    				resultincog2 = resultincog2 + 1;
+    			}else if(matcher2.group(2).equalsIgnoreCase("-")) {
+    				resultincog2 = resultincog2 - 1;
+    			}
+    			System.out.println(resultincog2 + "x");
+    		}
+            resultnum = resultnum2 + (resultnum1*(-1));
+            resultincog = resultincog1 + (resultincog2*(-1));
+            System.out.println("\n" + resultnum);
+            System.out.println("\n" + resultincog + "x");
+            
+            resultfin = resultnum/resultincog;
+            System.out.println("x = " + resultfin);
+        }
+        
+        /* while (matcher.find()) {
+        	System.out.printf("\nEcuacion: %s\n", matcher.group(0));
 			System.out.printf("-----Primera expresion---- \n%s%s\n", matcher.group(1), (matcher.group(4)=="null" ? "" : matcher.group(4)));
 			System.out.printf("Primer término: %s\n", matcher.group(3));
 			if(matcher.group(4)!="null") {
@@ -38,7 +122,7 @@ public class Exercise6 {
 			System.out.printf("Primer término: %s\n", matcher.group(9));
 			System.out.printf("Segundo término: %s\n", matcher.group(12));
 			
-        }
+        }*/
 	}
 	
 	public static void main(String[] args) {
