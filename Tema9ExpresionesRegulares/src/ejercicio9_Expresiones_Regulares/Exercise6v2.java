@@ -3,7 +3,7 @@ package ejercicio9_Expresiones_Regulares;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Exercise6 {
+public class Exercise6v2 {
 
 	public void show() {
 		
@@ -17,7 +17,9 @@ public class Exercise6 {
 		int resultincog2 = 0;
         int resultnum1 = 0;
         int resultnum2 = 0;
-                
+              
+        System.out.println("Introduzca una ecuación de primer grado:");
+        
         pattern = Pattern.compile("^(([\\p{Punct}&&[-+]]??)([\\p{Lower}&&[x]]|[\\p{Digit}]+?)){1}?(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+?))*?=(([\\p{Punct}&&[-+]]??)([\\p{Lower}&&[x]]|[\\p{Digit}]+?)){1}?(([\\p{Punct}&&[-+]])([\\p{Lower}&&[x]]|[\\p{Digit}]+?))*?$", Pattern.MULTILINE);
 		matcher = pattern.matcher(""" 
 									x=3+13
@@ -149,7 +151,7 @@ public class Exercise6 {
 	
 	public static void main(String[] args) {
 
-		new Exercise6().show();
+		new Exercise6v2().show();
 		
 	}
 
