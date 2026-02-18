@@ -31,8 +31,11 @@ public class Exercise6 {
 									3-1+x=-4+6--x
 									
 									""");
+		
 		System.out.println("Ecuaciones:\n");
+		
         while (matcher.find()) {
+        	
         	System.out.printf("%-25s", matcher.group(0));
         	countincog1 = 0;
             countincog2 = 0;
@@ -43,6 +46,7 @@ public class Exercise6 {
         	ecuacion = matcher.group(0);
         	expresion1 = ecuacion.substring(0, ecuacion.indexOf("="));
     		expresion2 = ecuacion.substring(ecuacion.indexOf("=")+1);
+    		
     		if(expresion1.substring(0,1)!= "-") {
     			if(expresion1.substring(0,1)!= "+") {
     				expresion1 = "+".concat(expresion1);
@@ -65,6 +69,7 @@ public class Exercise6 {
     				i++;
     			}
     		}
+    		
     		patternnum = Pattern.compile("^(([\\p{Punct}&&[-+]])([\\p{Digit}]+?))*?$", Pattern.MULTILINE);
             matcher2 = patternnum.matcher(expresion1);
             while (matcher2.find()) {
@@ -93,8 +98,7 @@ public class Exercise6 {
     				}else {
     					resultincog1 = resultincog1 - 1;
     				}
-    			}
-    			
+    			}    			
     		}
             patternnum = Pattern.compile("^(([\\p{Punct}&&[-+]])([\\p{Digit}]+?))*?$", Pattern.MULTILINE);
             matcher2 = patternnum.matcher(expresion2);
@@ -124,33 +128,17 @@ public class Exercise6 {
     				}else {
     					resultincog2 = resultincog2 - 1;
     				}
-    			}
-    			
+    			}	
     		}
             resultnum = resultnum2 + (resultnum1*(-1));
             resultincog = resultincog1 + (resultincog2*(-1));            
             resultfin = resultnum/resultincog;
             System.out.println("Solución: x = " + resultfin);
         }
-        
-        /* while (matcher.find()) {
-        	System.out.printf("\nEcuacion: %s\n", matcher.group(0));
-			System.out.printf("-----Primera expresion---- \n%s%s\n", matcher.group(1), (matcher.group(4)=="null" ? "" : matcher.group(4)));
-			System.out.printf("Primer término: %s\n", matcher.group(3));
-			if(matcher.group(4)!="null") {
-				System.out.printf("Segundo término: %s\n", matcher.group(6));
-			}
-			System.out.printf("-----Segunda expresion---- \n%s%s\n", matcher.group(7), matcher.group(10));
-			System.out.printf("Primer término: %s\n", matcher.group(9));
-			System.out.printf("Segundo término: %s\n", matcher.group(12));
-			
-        }*/
 	}
 	
 	public static void main(String[] args) {
-
 		new Exercise6().show();
-		
 	}
 
 }
